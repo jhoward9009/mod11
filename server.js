@@ -14,17 +14,29 @@ const newId = shortid.generate()
 console.log(newId)
 
 
-const data = require('./db/db.json')
+app.post('/api/notes', (req,res)=> {
+    const addNote = { ...req.body, "id": newId}
+    fs.readFile ("./db/db.json", "utf8", (error, results) => {
+    
+    var getAll = JSON.parse(results)
+    
+    getAll.push(addNote)
+    
+    fs.writeFile("./db/db.json", JSON.stringify(getAll), (error, results) => {
+        if (error) {"error: ",  console.log(error)};
+    res.json(getAll)
+    
+    })
+    
+    }
 
 
-// app.post('/api/notes', (req, res) =>{
+// app.get('/api/notes', (req, res) =>{
 
 
 // }
 
-// app.get('/api/notes', (req,res)=> {
 
-// }
 
 
 // app.listen(PORT, () => {
