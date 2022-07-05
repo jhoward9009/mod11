@@ -7,15 +7,26 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
+const shortid = require('shortid');
+console.log(shortid.generate());
+
+const newId = shortid.generate()
+console.log(newId)
+
+
+const data = require('./db/db.json')
+
+
 // app.post('/api/notes', (req, res) =>{
+
 
 // }
 
-app.get('/api/notes', (req,res)=> {
-    
-}
+// app.get('/api/notes', (req,res)=> {
+
+// }
 
 
-app.listen(PORT, () => {
-    console.log(`API server now on port 3001!  http://localhost:${PORT}`);
-});
+// app.listen(PORT, () => {
+//     console.log(`API server now on port 3001!  http://localhost:${PORT}`);
+// })
